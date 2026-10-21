@@ -1,0 +1,204 @@
+.footer {
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+    position: relative;
+    overflow: hidden;
+    background: var(--preto);
+    color: var(--branco);
+    padding: clamp(3.5rem, 8vw, 6rem) clamp(1.5rem, 6vw, 6rem) 1.5rem;
+}
+
+.inner {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* ---------- topo ---------- */
+.top {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: clamp(2.5rem, 8vw, 8rem);
+}
+
+.brand {
+    display: grid;
+    align-content: space-between;
+    gap: 2rem;
+}
+
+.tagline {
+    max-width: 12ch;
+    font-size: clamp(1.8rem, 3.6vw, 3rem);
+    font-weight: 900;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+}
+
+.tagline em {
+    font-style: italic;
+    color: var(--lima);
+}
+
+.socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    list-style: none;
+}
+
+/* ---------- colunas ---------- */
+.columns {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+}
+
+.column h3 {
+    margin-bottom: 1.25rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--cinza);
+}
+
+.column ul {
+    display: grid;
+    gap: 0.75rem;
+    list-style: none;
+}
+
+/* ---------- links ---------- */
+.footer a {
+    position: relative;
+    display: inline-block;
+    color: rgb(255 255 255 / 0.75);
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.footer a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 1px;
+    background: var(--lima);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s var(--ease-out);
+}
+
+.footer a:hover {
+    color: var(--lima);
+}
+
+.footer a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.footer a:focus-visible {
+    outline: 2px solid var(--lima);
+    outline-offset: 4px;
+}
+
+.socials a {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--branco);
+}
+
+/* ---------- palavra-marca ---------- */
+.wordmark {
+    margin: clamp(2.5rem, 7vw, 5rem) 0 clamp(1rem, 3vw, 2rem);
+    font-size: clamp(6rem, 29vw, 26rem);
+    font-weight: 900;
+    line-height: 0.74;
+    letter-spacing: -0.04em;
+    text-align: center;
+    color: transparent;
+    -webkit-text-stroke: 1px rgb(255 255 255 / 0.22);
+    user-select: none;
+    transition: color 0.6s ease;
+}
+
+.footer:hover .wordmark {
+    color: rgb(255 255 255 / 0.04);
+}
+
+/* ---------- base ---------- */
+.bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    flex-wrap: wrap;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgb(255 255 255 / 0.12);
+}
+
+.bottom p {
+    font-size: 0.75rem;
+    color: var(--cinza);
+}
+
+.bottom ul {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.bottom a {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--cinza);
+}
+
+.toTop {
+    color: var(--branco) !important;
+}
+
+/* ---------- responsivo ---------- */
+@media (max-width: 860px) {
+    .top {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .brand {
+        gap: 1.5rem;
+    }
+
+    .tagline {
+        max-width: none;
+    }
+}
+
+@media (max-width: 560px) {
+    .columns {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .column:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .footer a,
+    .footer a::after,
+    .wordmark {
+        transition: none;
+    }
+}

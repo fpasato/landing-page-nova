@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Urbanist', sans-serif;
+}
+
+:root {
+  /* ---------- Cores da marca ---------- */
+  --preto: #000000;
+  --branco: #FFFFFF;
+  --grafite: #242424;
+  --cinza: #888888;
+  --lima: #D8FF3E;
+
+  --bg: #E8E4D9;
+  --bg-soft: #DED9CB;
+
+  --text: #1A1A18;
+  --text-muted: #6B6B63;
+
+
+  --accent: var(--lima);
+}

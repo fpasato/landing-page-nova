@@ -1,0 +1,288 @@
+.newsletter {
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+    padding: clamp(4rem, 12vw, 9rem) clamp(1.5rem, 6vw, 6rem);
+    background: var(--bg);
+    color: var(--text);
+}
+
+.inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(2.5rem, 8vw, 8rem);
+    align-items: end;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding-top: clamp(2rem, 5vw, 3.5rem);
+    border-top: 1px solid rgb(26 26 24 / 0.2);
+}
+
+/* ---------- texto ---------- */
+.copy {
+    display: grid;
+    justify-items: start;
+    gap: 1.25rem;
+}
+
+.tag {
+    display: inline-block;
+    padding: 0.35rem 0.9rem;
+    border: 1px solid rgb(26 26 24 / 0.35);
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.title {
+    font-size: clamp(2.8rem, 7vw, 6rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: var(--text);
+}
+
+.title span {
+    display: inline-block;
+    width: 0.2em;
+    height: 0.2em;
+    margin-left: 0.04em;
+    overflow: hidden;
+    border-radius: 50%;
+    background: var(--lima);
+    box-shadow: 0 0 0 2px var(--preto);
+    color: transparent;
+}
+
+.text {
+    max-width: 42ch;
+    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+    line-height: 1.7;
+    color: var(--text-muted);
+}
+
+/* ---------- formulário ---------- */
+.formWrap {
+    min-width: 0;
+}
+
+.form {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgb(26 26 24 / 0.35);
+    transition: border-color 0.3s ease;
+}
+
+/* linha de foco que cresce da esquerda */
+.field::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    background: var(--preto);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s var(--ease-out);
+}
+
+.field:focus-within::after {
+    transform: scaleX(1);
+}
+
+.field[data-error='true'] {
+    border-bottom-color: #b3261e;
+}
+
+.field[data-error='true']::after {
+    background: #b3261e;
+    transform: scaleX(1);
+}
+
+.field label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.field input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.9rem 0;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    font-size: clamp(1rem, 1.6vw, 1.3rem);
+    font-weight: 500;
+    outline: none;
+}
+
+.field input::placeholder {
+    color: rgb(26 26 24 / 0.4);
+}
+
+/* ---------- botão ---------- */
+.btn {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.8rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--preto);
+    color: var(--branco);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s var(--ease-out);
+}
+
+.btn svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.35s var(--ease-out);
+}
+
+.btn:hover:not(:disabled) {
+    background: var(--lima);
+    color: var(--preto);
+    transform: translateY(-2px);
+}
+
+.btn:hover:not(:disabled) svg {
+    transform: translateX(4px);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: progress;
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--preto);
+    outline-offset: 3px;
+}
+
+/* ---------- mensagens ---------- */
+.msg {
+    min-height: 1.2em;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #b3261e;
+}
+
+.note {
+    max-width: 52ch;
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+/* ---------- sucesso ---------- */
+.success {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--preto);
+    animation: rise 0.7s var(--ease-out) both;
+}
+
+.success svg {
+    flex: none;
+    width: 44px;
+    height: 44px;
+    padding: 11px;
+    border-radius: 50%;
+    background: var(--lima);
+    fill: none;
+    stroke: var(--preto);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.success p {
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+@keyframes rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: none; }
+}
+
+/* ---------- mobile ---------- */
+@media (max-width: 860px) {
+    .inner {
+        grid-template-columns: minmax(0, 1fr);
+        align-items: start;
+    }
+}
+
+@media (max-width: 480px) {
+    .field {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
+
+    .field::after {
+        display: none;
+    }
+
+    .field input {
+        padding: 0.9rem 0;
+        border-bottom: 1px solid rgb(26 26 24 / 0.35);
+    }
+
+    .field[data-error='true'] input {
+        border-bottom-color: #b3261e;
+    }
+
+    .btn {
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .field::after,
+    .btn,
+    .btn svg {
+        transition: none;
+    }
+
+    .success {
+        animation: none;
+    }
+}
